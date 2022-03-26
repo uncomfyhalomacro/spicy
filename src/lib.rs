@@ -1,31 +1,6 @@
-// use gtk::prelude::*;
-// use gtk::Application;
-// use gtk::ApplicationWindow;
 use iced::{ Container, Image, Length, Element};
 use iced::Settings;
 use iced::Sandbox;
-
-// pub fn basic_window() {
-//     let app = Application::builder()
-//     .application_id("org.gtk-rs.example")
-//         .build();
-//
-//     // Connect to "activate" signal of `app`
-//     app.connect_activate(build_ui);
-//
-//     // Run the application
-//     app.run();
-// }
-//
-// pub fn build_ui(app: &Application) {
-//     let window = ApplicationWindow::builder()
-//         .application(app)
-//         .title("Spicy Screenshot Editor")
-//         .build();
-//
-//     // Present window
-//     window.present();
-// }
 
 pub fn present() -> iced::Result {
     ImageWindow::run(Settings::default())
