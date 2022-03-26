@@ -1,3 +1,7 @@
+
+
 fn main() {
-    println!("Hello, world!");
+    // Create a new application
+   spicy::present();
 }
+
