@@ -46,8 +46,7 @@ impl Sandbox for ImageWindow {
             }
             Result::Ok(img_file) if img_file.is_dir() => {
                 error!("Path is not a file.");
-                let txt = Text::new("Path is not a file!");
-                Container::new(txt.size(48))
+                Container::new(Text::new("Path is not a file!").size(48))
                     .height(Length::Fill)
                     .width(Length::Fill)
                     .center_x()
@@ -55,8 +54,7 @@ impl Sandbox for ImageWindow {
                     .into()
             }
             Result::Err(err) => {
-                let txt = Text::new(format!("Error: {}", err));
-                Container::new(txt.size(48))
+                Container::new(Text::new(format!("Error: {}", err)).size(48))
                     .height(Length::Fill)
                     .width(Length::Fill)
                     .center_x()
@@ -64,8 +62,7 @@ impl Sandbox for ImageWindow {
                     .into()
             }
             Result::Ok(_) => {
-                let txt = Text::new("Unknown error");
-                Container::new(txt.size(48))
+                Container::new(Text::new("Unknown error").size(48))
                     .height(Length::Fill)
                     .width(Length::Fill)
                     .center_x()
