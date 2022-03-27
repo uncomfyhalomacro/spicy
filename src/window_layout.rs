@@ -1,13 +1,33 @@
-use iced::Sandbox;
-use iced::Settings;
-use iced::{Container, Element, Image, Length, Text};
+use iced::window;
+use iced::{Container, Element, Image, Length, Sandbox, Settings, Text};
 use log::{self, error};
 use std::{fs, result::Result};
 
 pub fn present() {
-    match ImageWindow::run(Settings::default()) {
+    match ImageWindow::run(spicy_settings()) {
         Result::Ok(val) => val,
         Result::Err(err) => error!("Window failed to load -> {}", err),
+    }
+}
+
+fn spicy_settings() -> iced::Settings<()> {
+    Settings {
+        window: window::Settings {
+            size: (1024, 768),
+            min_size: Some((256, 192)),
+            max_size: None,
+            resizable: true,
+            decorations: true,
+            transparent: false,
+            always_on_top: false,
+            icon: None,
+        },
+
+        flags: Default::default(),
+        antialiasing: false,
+        default_text_size: 20,
+        default_font: Default::default(),
+        exit_on_close_request: true,
     }
 }
 
@@ -66,5 +86,20 @@ impl Sandbox for ImageWindow {
                 .center_y()
                 .into(),
         }
+    }
+
+    fn background_color(&self) -> iced::Color {
+        iced::Color::BLACK
+    }
+
+    fn scale_factor(&self) -> f64 {
+        1.0
+    }
+
+    fn run(settings: Settings<()>) -> Result<(), iced::Error>
+    where
+        Self: 'static + Sized,
+    {
+        <Self as iced::Application>::run(settings)
     }
 }
