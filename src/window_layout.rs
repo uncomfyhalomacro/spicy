@@ -53,22 +53,18 @@ impl Sandbox for ImageWindow {
                     .center_y()
                     .into()
             }
-            Result::Err(err) => {
-                Container::new(Text::new(format!("Error: {}", err)).size(48))
-                    .height(Length::Fill)
-                    .width(Length::Fill)
-                    .center_x()
-                    .center_y()
-                    .into()
-            }
-            Result::Ok(_) => {
-                Container::new(Text::new("Unknown error").size(48))
-                    .height(Length::Fill)
-                    .width(Length::Fill)
-                    .center_x()
-                    .center_y()
-                    .into()
-            }
+            Result::Err(err) => Container::new(Text::new(format!("Error: {}", err)).size(48))
+                .height(Length::Fill)
+                .width(Length::Fill)
+                .center_x()
+                .center_y()
+                .into(),
+            Result::Ok(_) => Container::new(Text::new("Unknown error").size(48))
+                .height(Length::Fill)
+                .width(Length::Fill)
+                .center_x()
+                .center_y()
+                .into(),
         }
     }
 }
