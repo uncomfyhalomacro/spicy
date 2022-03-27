@@ -1,4 +1,6 @@
+pub mod window_layout;
+
 fn main() {
     // Create a new application
-    spicy::present().unwrap();
+    window_layout::present();
 }
